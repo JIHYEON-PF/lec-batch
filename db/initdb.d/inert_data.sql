@@ -15,3 +15,11 @@ VALUES ('A10000000', '우영우', 'ACTIVE', '01011112222', NULL, NOW()),
        ('B10000011', '동그라미', 'INACTIVE', '01088889999', NULL, NOW()),
        ('B20000000', '한선영', 'ACTIVE', '01099990000', NULL, NOW()),
        ('B20000001', '태수미', 'ACTIVE', '01000001111', NULL, NOW());
+
+INSERT INTO user_group_mapping (user_group_id, user_id, user_group_name, description, created_at)
+VALUES ('HANBADA', 'A10000000', '한바다', '한바다 임직원 그룹', NOW()),
+       ('HANBADA', 'A10000001', '한바다', '한바다 임직원 그룹', NOW()),
+       ('HANBADA', 'A10000002', '한바다', '한바다 임직원 그룹', NOW()),
+       ('HANBADA', 'B10000010', '한바다', '한바다 임직원 그룹', NOW()),
+       ('HANBADA', 'B20000000', '한바다', '한바다 임직원 그룹', NOW()),
+       ('TEASAN', 'B20000001', '태산', '태산 임직원 그룹', NOW());
