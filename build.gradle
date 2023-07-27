@@ -22,11 +22,11 @@ repositories {
 }
 
 dependencies {
-    // Batch
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
-
-    // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok'
@@ -39,6 +39,9 @@ dependencies {
     // mapstruct
     implementation 'org.mapstruct:mapstruct:1.5.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+
+    // hibernate-types
+    implementation 'com.vladmihalcea:hibernate-types-52:2.19.2'
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
