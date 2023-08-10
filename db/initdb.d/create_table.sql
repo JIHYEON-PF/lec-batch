@@ -4,15 +4,15 @@
  그 외 varchar(50)
  */
 
- CREATE TABLE `package` (
-     `package_seq`  int         NOT NULL AUTO_INCREMENT            COMMENT '패키지 순번',
-     `package_name` varchar(50) NOT NULL                           COMMENT '패키지 이름',
-     `count`        int                  DEFAULT NULL              COMMENT '이용권 수, NULL일 경우 무제한',
-     `period`       int                  DEFAULT NULL              COMMENT '기간(일), NULL일 경우 무제한',
-     `created_at`   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
-     `modified_at`   timestamp            DEFAULT NULL              COMMENT '수정 일시',
-     PRIMARY KEY (`package_seq`)
- ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='패키지';
+CREATE TABLE `package` (
+    `package_seq`  int         NOT NULL AUTO_INCREMENT            COMMENT '패키지 순번',
+    `package_name` varchar(50) NOT NULL                           COMMENT '패키지 이름',
+    `count`        int                  DEFAULT NULL              COMMENT '이용권 수, NULL일 경우 무제한',
+    `period`       int                  DEFAULT NULL              COMMENT '기간(일), NULL일 경우 무제한',
+    `created_at`   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    `modified_at`   timestamp            DEFAULT NULL              COMMENT '수정 일시',
+    PRIMARY KEY (`package_seq`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='패키지';
 
 CREATE TABLE `pass` (
     `pass_seq`        int         NOT NULL AUTO_INCREMENT            COMMENT '이용권 순번',
@@ -40,7 +40,6 @@ CREATE TABLE `bulk_pass`(
     `modified_at`    timestamp            DEFAULT NULL              COMMENT '수정 일시',
     PRIMARY KEY (`bulk_pass_seq`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='대량 이용권, 다수의 이용자에게 이용권을 지급하기 위함';
-)
 
 CREATE TABLE `booking` (
     `booking_seq`  int         NOT NULL AUTO_INCREMENT            COMMENT '예약 순번',
@@ -89,3 +88,13 @@ CREATE TABLE `notification` (
     `modified_at`      timestamp              DEFAULT NULL              COMMENT '수정 일시',
     PRIMARY KEY (`notification_seq`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='알람';
+
+CREATE TABLE `statistics` (
+    `statistics_seq` int NOT NULL AUTO_INCREMENT COMMENT '통계 순번',
+    `statistics_at` timestamp NOT NULL COMMENT '통계 일시',
+    `all_count` int NOT NULL DEFAULT 0 COMMENT '전체 횟수',
+    `attended_count` int NOT NULL DEFAULT 0 COMMENT '출석 횟수',
+    `cancelled_count` int NOT NULL DEFAULT  0 COMMENT '취소 횟수',
+    PRIMARY KEY (`statistics_seq`),
+    INDEX idx_statistics_at (`statistics_at`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='통계';

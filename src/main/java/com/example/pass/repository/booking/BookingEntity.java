@@ -3,6 +3,7 @@ package com.example.pass.repository.booking;
 import com.example.pass.repository.BaseEntity;
 import com.example.pass.repository.pass.PassEntity;
 import com.example.pass.repository.user.UserEntity;
+import com.example.pass.util.LocalDateTimeUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,9 +28,9 @@ public class BookingEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
-    private Boolean usedPass;
+    private boolean usedPass;
 
-    private Boolean attended;
+    private boolean attended;
 
     private LocalDateTime startedAd;
 
@@ -44,4 +45,8 @@ public class BookingEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "passSeq", insertable = false, updatable = false)
     private PassEntity passEntity;
+
+    public LocalDateTime getStatisticsAt() {
+        return LocalDateTimeUtils.getMidnightDateTime(this.endedAt);
+    }
 }
